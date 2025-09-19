@@ -8,6 +8,7 @@ import 'special_offers.dart';
 import 'package:shop_app/services/products_list.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/components/product_card.dart';
+import 'package:shop_app/translations.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -75,7 +76,7 @@ class _BodyState extends State<Body> {
                 padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.getProportionateScreenWidth(20)),
                 child: Text(
-                  "Search Results",
+                  AppTranslations.searchResults,
                   style: TextStyle(
                     fontSize: SizeConfig.getProportionateScreenWidth(18),
                     fontWeight: FontWeight.w600,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/components/no_account_text.dart';
 import 'package:shop_app/components/socal_card.dart';
+import 'package:shop_app/translations.dart';
 import '../../../size_config.dart';
 import 'sign_form.dart';
 
@@ -21,7 +22,7 @@ class Body extends StatelessWidget {
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.04),
                 Text(
-                  "Welcome Back",
+                  AppTranslations.welcomeBack,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: SizeConfig.getProportionateScreenWidth(28),
@@ -29,7 +30,7 @@ class Body extends StatelessWidget {
                   ),
                 ),
                 const Text(
-                  "Sign in with your email and password  \nor continue with social media",
+                  AppTranslations.signInWithEmail,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),

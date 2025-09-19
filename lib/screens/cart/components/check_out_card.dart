@@ -1,14 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/models/UserService.dart';
+import 'package:shop_app/services/locator.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
+import 'package:shop_app/translations.dart';
 
-class CheckoutCard extends StatelessWidget {
+class CheckoutCard extends StatefulWidget {
   const CheckoutCard({
     Key? key,
   }) : super(key: key);
+
+  @override
+  _CheckoutCardState createState() => _CheckoutCardState();
+}
+
+class _CheckoutCardState extends State<CheckoutCard> {
+  final UserService _userService = locator<UserService>();
+  double _total = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _updateTotal();
+  }
+
+  void _updateTotal() {
+    setState(() {
+      _total = _userService.getCartTotal();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +73,7 @@ class CheckoutCard extends StatelessWidget {
                   child: SvgPicture.asset("assets/icons/receipt.svg"),
                 ),
                 Spacer(),
-                Text("Add voucher code"),
+                Text(AppTranslations.addVoucherCode),
                 const SizedBox(width: 10),
                 Icon(
                   Icons.arrow_forward_ios,
@@ -65,10 +88,10 @@ class CheckoutCard extends StatelessWidget {
               children: [
                 Text.rich(
                   TextSpan(
-                    text: "Total:\n",
+                    text: "${AppTranslations.total}:\n",
                     children: [
                       TextSpan(
-                        text: "\$337.15",
+                        text: "\$${_total.toStringAsFixed(2)}",
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],
@@ -77,7 +100,7 @@ class CheckoutCard extends StatelessWidget {
                 SizedBox(
                   width: SizeConfig.getProportionateScreenWidth(190),
                   child: DefaultButton(
-                    text: "Check Out",
+                    text: AppTranslations.checkOut,
                     press: () {},
                   ),
                 ),

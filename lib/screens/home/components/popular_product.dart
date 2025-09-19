@@ -4,6 +4,7 @@ import 'package:shop_app/models/Product.dart';
 
 import '../../../size_config.dart';
 import 'section_title.dart';
+import 'package:shop_app/translations.dart';
 
 class PopularProducts extends StatelessWidget {
   const PopularProducts({
@@ -20,7 +21,8 @@ class PopularProducts extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(
               horizontal: SizeConfig.getProportionateScreenWidth(20)),
-          child: SectionTitle(title: "Popular Products", press: () {}),
+          child: SectionTitle(
+              title: AppTranslations.popularProducts, press: () {}),
         ),
         SizedBox(height: SizeConfig.getProportionateScreenWidth(20)),
         SingleChildScrollView(

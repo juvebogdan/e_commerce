@@ -29,7 +29,12 @@ final Map<String, WidgetBuilder> routes = {
   ProfileScreen.routeName: (context) => ProfileScreen(),
   FavoritesScreen.routeName: (context) => FavoritesScreen(),
   // Add the new route for CategoryProductsScreen
-  '/category_products': (context) => CategoryProductsScreen(
-        category: ModalRoute.of(context)!.settings.arguments as String,
-      ),
+  '/category_products': (context) {
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    return CategoryProductsScreen(
+      categoryId: arguments['id']! as String,
+      categoryName: arguments['name']! as String,
+    );
+  },
 };

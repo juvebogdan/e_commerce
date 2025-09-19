@@ -4,6 +4,7 @@ import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/components/form_error.dart';
 import 'package:shop_app/components/no_account_text.dart';
 import 'package:shop_app/size_config.dart';
+import 'package:shop_app/translations.dart';
 
 import '../../../constants.dart';
 
@@ -20,7 +21,7 @@ class Body extends StatelessWidget {
             children: [
               SizedBox(height: SizeConfig.screenHeight * 0.04),
               Text(
-                "Forgot Password",
+                AppTranslations.forgotPassword,
                 style: TextStyle(
                   fontSize: SizeConfig.getProportionateScreenWidth(28),
                   color: Colors.black,
@@ -28,7 +29,7 @@ class Body extends StatelessWidget {
                 ),
               ),
               Text(
-                "Please enter your email and we will send \nyou a link to return to your account",
+                AppTranslations.forgotPasswordInfo,
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.1),
@@ -61,34 +62,36 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
             keyboardType: TextInputType.emailAddress,
             onSaved: (newValue) => email = newValue,
             onChanged: (value) {
-              if (value.isNotEmpty && errors.contains(kEmailNullError)) {
+              if (value.isNotEmpty &&
+                  errors.contains(AppTranslations.emailNullError)) {
                 setState(() {
-                  errors.remove(kEmailNullError);
+                  errors.remove(AppTranslations.emailNullError);
                 });
               } else if (emailValidatorRegExp.hasMatch(value) &&
-                  errors.contains(kInvalidEmailError)) {
+                  errors.contains(AppTranslations.invalidEmailError)) {
                 setState(() {
-                  errors.remove(kInvalidEmailError);
+                  errors.remove(AppTranslations.invalidEmailError);
                 });
               }
-              return null;
+              return;
             },
             validator: (value) {
-              if (value?.isEmpty ?? true && !errors.contains(kEmailNullError)) {
+              if (value?.isEmpty ??
+                  true && !errors.contains(AppTranslations.emailNullError)) {
                 setState(() {
-                  errors.add(kEmailNullError);
+                  errors.add(AppTranslations.emailNullError);
                 });
               } else if (!(emailValidatorRegExp.hasMatch(value ?? '')) &&
-                  !errors.contains(kInvalidEmailError)) {
+                  !errors.contains(AppTranslations.invalidEmailError)) {
                 setState(() {
-                  errors.add(kInvalidEmailError);
+                  errors.add(AppTranslations.invalidEmailError);
                 });
               }
               return null;
             },
             decoration: InputDecoration(
-              labelText: "Email",
-              hintText: "Enter your email",
+              labelText: AppTranslations.email,
+              hintText: AppTranslations.enterYourEmail,
               floatingLabelBehavior: FloatingLabelBehavior.always,
               suffixIcon: CustomSuffixIcon(svgIcon: "assets/icons/Mail.svg"),
             ),
@@ -97,7 +100,7 @@ class _ForgotPassFormState extends State<ForgotPassForm> {
           FormError(errors: errors),
           SizedBox(height: SizeConfig.screenHeight * 0.1),
           DefaultButton(
-            text: "Continue",
+            text: AppTranslations.continueText,
             press: () {
               if (_formKey.currentState?.validate() ?? false) {
                 // Do what you want to do

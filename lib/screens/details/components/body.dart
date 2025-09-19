@@ -2,32 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/size_config.dart';
+import 'package:shop_app/translations.dart';
 
 import 'color_dots.dart';
 import 'product_description.dart';
 import 'top_rounded_container.dart';
 import 'product_images.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shop_app/models/UserService.dart';
 import 'package:shop_app/services/locator.dart';
 
 class Body extends StatelessWidget {
   final Product product;
   final UserService _userService;
-  final FirebaseFirestore _fireStore;
 
   const Body._({
     required this.product,
     required UserService userService,
-    required FirebaseFirestore fireStore,
   })  : _userService = userService,
-        _fireStore = fireStore,
         super(key: null);
 
   factory Body({required Product product}) => Body._(
         product: product,
         userService: locator<UserService>(),
-        fireStore: FirebaseFirestore.instance,
       );
 
   @override
@@ -59,15 +55,11 @@ class Body extends StatelessWidget {
                             top: SizeConfig.getProportionateScreenWidth(15),
                           ),
                           child: DefaultButton(
-                            text: "Add To Cart",
+                            text: AppTranslations.addToCart,
                             press: () {
                               try {
-                                _userService.cart.add(product.id);
-                                _fireStore
-                                    .collection("user information")
-                                    .doc("${_userService.userId}")
-                                    .update({"cart": _userService.cart});
-                                print("++++++++++++++++++++++0");
+                                _userService.addProductToCart(product);
+                                print("Product added to cart");
                                 // Navigator.pushNamed(
                                 //     context, OtpScreen.routeName);
                               } catch (e) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:shop_app/size_config.dart';
+import 'package:shop_app/translations.dart';
 import '../components/splash_content.dart';
 import '../../../components/default_button.dart';
 
@@ -16,16 +17,15 @@ class _BodyState extends State<Body> {
   int currentPage = 0;
   final List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to Tokoto, Let's shop!",
+      "text": AppTranslations.splashText1,
       "image": "assets/images/splash_1.png"
     },
     {
-      "text":
-          "We help people connect with stores \naround United States of America",
+      "text": AppTranslations.splashText2,
       "image": "assets/images/splash_2.png"
     },
     {
-      "text": "We show the easy way to shop. \nJust stay at home with us",
+      "text": AppTranslations.splashText3,
       "image": "assets/images/splash_3.png"
     },
   ];
@@ -70,7 +70,7 @@ class _BodyState extends State<Body> {
                     ),
                     const Spacer(flex: 3),
                     DefaultButton(
-                      text: "Continue",
+                      text: AppTranslations.continueText,
                       press: () {
                         Navigator.pushNamed(context, SignInScreen.routeName);
                       },

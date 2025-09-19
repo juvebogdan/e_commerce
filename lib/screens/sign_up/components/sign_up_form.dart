@@ -5,6 +5,7 @@ import 'package:shop_app/components/form_error.dart';
 import 'package:shop_app/screens/complete_profile/complete_profile_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shop_app/translations.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
@@ -56,7 +57,7 @@ class _SignUpFormState extends State<SignUpForm> {
           FormError(errors: errors),
           SizedBox(height: SizeConfig.getProportionateScreenHeight(40)),
           DefaultButton(
-            text: "Sign Up",
+            text: AppTranslations.signUp,
             press: () async {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
@@ -96,25 +97,25 @@ class _SignUpFormState extends State<SignUpForm> {
       onSaved: (newValue) => confirmPassword = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: AppTranslations.passNullError);
         } else if (value.isNotEmpty && password == confirmPassword) {
-          removeError(error: kMatchPassError);
+          removeError(error: AppTranslations.matchPassError);
         }
         confirmPassword = value;
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: AppTranslations.passNullError);
           return "";
         } else if (password != value) {
-          addError(error: kMatchPassError);
+          addError(error: AppTranslations.matchPassError);
           return "";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Confirm Password",
-        hintText: "Re-enter your password",
+        labelText: AppTranslations.confirmPassword,
+        hintText: AppTranslations.reEnterYourPassword,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(svgIcon: "assets/icons/Lock.svg"),
       ),
@@ -127,25 +128,25 @@ class _SignUpFormState extends State<SignUpForm> {
       onSaved: (newValue) => password = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
+          removeError(error: AppTranslations.passNullError);
         } else if (value.length >= 8) {
-          removeError(error: kShortPassError);
+          removeError(error: AppTranslations.shortPassError);
         }
         password = value;
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
-          addError(error: kPassNullError);
+          addError(error: AppTranslations.passNullError);
           return "";
         } else if (value.length < 8) {
-          addError(error: kShortPassError);
+          addError(error: AppTranslations.shortPassError);
           return "";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Password",
-        hintText: "Enter your password",
+        labelText: AppTranslations.password,
+        hintText: AppTranslations.enterYourPassword,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(svgIcon: "assets/icons/Lock.svg"),
       ),
@@ -158,24 +159,24 @@ class _SignUpFormState extends State<SignUpForm> {
       onSaved: (newValue) => email = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kEmailNullError);
+          removeError(error: AppTranslations.emailNullError);
         } else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
+          removeError(error: AppTranslations.invalidEmailError);
         }
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
-          addError(error: kEmailNullError);
+          addError(error: AppTranslations.emailNullError);
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {
-          addError(error: kInvalidEmailError);
+          addError(error: AppTranslations.invalidEmailError);
           return "";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Email",
-        hintText: "Enter your email",
+        labelText: AppTranslations.email,
+        hintText: AppTranslations.enterYourEmail,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(svgIcon: "assets/icons/Mail.svg"),
       ),

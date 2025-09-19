@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop_app/screens/category_products/category_products_screen.dart';
+import 'package:shop_app/translations.dart';
 
 import '../../../size_config.dart';
 
@@ -8,11 +8,31 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
-      {"icon": "assets/icons/Flash Icon.svg", "text": "Electronics"},
-      {"icon": "assets/icons/wears.svg", "text": "Wears"},
-      {"icon": "assets/icons/Game Icon.svg", "text": "Game"},
-      {"icon": "assets/icons/watches.svg", "text": "Watches"},
-      {"icon": "assets/icons/Discover.svg", "text": "More"},
+      {
+        "id": "electronics",
+        "icon": "assets/icons/Flash Icon.svg",
+        "text": AppTranslations.electronics
+      },
+      {
+        "id": "wears",
+        "icon": "assets/icons/wears.svg",
+        "text": AppTranslations.wears
+      },
+      {
+        "id": "game",
+        "icon": "assets/icons/Game Icon.svg",
+        "text": AppTranslations.game
+      },
+      {
+        "id": "watches",
+        "icon": "assets/icons/watches.svg",
+        "text": AppTranslations.watches
+      },
+      {
+        "id": "more",
+        "icon": "assets/icons/Discover.svg",
+        "text": AppTranslations.more
+      },
     ];
     return Padding(
       padding: EdgeInsets.all(SizeConfig.getProportionateScreenWidth(20)),
@@ -28,7 +48,10 @@ class Categories extends StatelessWidget {
               Navigator.pushNamed(
                 context,
                 '/category_products',
-                arguments: categories[index]["text"],
+                arguments: {
+                  'id': categories[index]["id"],
+                  'name': categories[index]["text"],
+                },
               );
             },
           ),

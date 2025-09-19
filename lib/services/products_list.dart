@@ -68,4 +68,27 @@ class ListOfProducts {
       return []; // Return an empty list in case of error
     }
   }
+
+  Future<Product?> getProductById(String id) async {
+    try {
+      final DocumentSnapshot doc = await _fireStore.doc(id).get();
+      if (doc.exists) {
+        final data = doc.data() as Map<String, dynamic>;
+        return Product(
+          id: doc.id,
+          image: data['image'] as String? ?? '',
+          title: data['title'] as String? ?? '',
+          price: (data['price'] ?? '0').toString(),
+          description: data['description'] as String? ?? '',
+          isPopular: data['popular'] as bool? ?? false,
+          category: data['category'] as String? ?? 'other',
+          rating: _parseRating(data['rating']),
+          isFavourite: data['isFavourite'] as bool? ?? false,
+        );
+      }
+    } catch (e) {
+      print('Error fetching product by id: $e');
+    }
+    return null;
+  }
 }

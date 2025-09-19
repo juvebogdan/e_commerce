@@ -3,6 +3,7 @@ import 'package:shop_app/components/custom_bottom_nav_bar.dart';
 import 'components/body.dart';
 import 'package:shop_app/enums.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shop_app/translations.dart';
 
 class FavoritesScreen extends StatefulWidget {
   static String routeName = "/favorites";
@@ -38,7 +39,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Favorites"),
+        title: Text(AppTranslations.favorites),
         automaticallyImplyLeading: false,
       ),
       body: Body(),
