@@ -1,15 +1,17 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:shop_app/components/custom_suffix_icon.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/components/form_error.dart';
 import 'package:shop_app/screens/otp/otp_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../../constants.dart';
 import '../../../size_config.dart';
+import 'package:shop_app/translations.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class CompleteProfileForm extends StatefulWidget {
+  const CompleteProfileForm({super.key});
+
   @override
   _CompleteProfileFormState createState() => _CompleteProfileFormState();
 }
@@ -76,7 +78,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           FormError(errors: errors),
           SizedBox(height: SizeConfig.getProportionateScreenHeight(40)),
           DefaultButton(
-            text: "continue",
+            text: AppTranslations.continueText,
             press: () {
               if (_formKey.currentState?.validate() ?? false) {
                 _formKey.currentState?.save();
@@ -109,20 +111,20 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       onSaved: (newValue) => address = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kAddressNullError);
+          removeError(error: AppTranslations.addressNullError);
         }
         return null;
       },
       validator: (value) {
         if (value?.isEmpty ?? true) {
-          addError(error: kAddressNullError);
+          addError(error: AppTranslations.addressNullError);
           return "";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Address",
-        hintText: "Enter your phone address",
+        labelText: AppTranslations.address,
+        hintText: AppTranslations.enterAddress,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon:
             CustomSuffixIcon(svgIcon: "assets/icons/Location point.svg"),
@@ -141,14 +143,14 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       onInputValidated: (value) {
         print(value);
         if (value == false) {
-          addError(error: kInvalidPhoneNumber);
+          addError(error: AppTranslations.invalidPhoneNumber);
         } else if (value == true) {
-          removeError(error: kInvalidPhoneNumber);
+          removeError(error: AppTranslations.invalidPhoneNumber);
         }
       },
       inputDecoration: InputDecoration(
-        labelText: "Phone Number",
-        hintText: "Enter your phone number",
+        labelText: AppTranslations.phoneNumber,
+        hintText: AppTranslations.enterPhoneNumber,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(svgIcon: "assets/icons/Phone.svg"),
       ),
@@ -164,8 +166,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     return TextFormField(
       onSaved: (newValue) => lastName = newValue,
       decoration: InputDecoration(
-        labelText: "Last Name",
-        hintText: "Enter your last name",
+        labelText: AppTranslations.lastName,
+        hintText: AppTranslations.enterLastName,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(svgIcon: "assets/icons/User.svg"),
       ),
@@ -177,20 +179,20 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       onSaved: (newValue) => firstName = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kNameNullError);
+          removeError(error: AppTranslations.nameNullError);
         }
         return null;
       },
       validator: (value) {
         if (value?.isEmpty ?? true) {
-          addError(error: kNameNullError);
+          addError(error: AppTranslations.nameNullError);
           return "";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "First Name",
-        hintText: "Enter your first name",
+        labelText: AppTranslations.firstName,
+        hintText: AppTranslations.enterFirstName,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(svgIcon: "assets/icons/User.svg"),
       ),

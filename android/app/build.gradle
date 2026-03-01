@@ -25,7 +25,7 @@ android {
 
     defaultConfig {
         applicationId "com.StefanTomovic.shop_app"
-        minSdkVersion 23
+        minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode 1
         versionName "1.0"

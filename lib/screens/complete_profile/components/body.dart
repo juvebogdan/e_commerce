@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/size_config.dart';
+import 'package:shop_app/translations.dart';
 
 import 'complete_profile_form.dart';
 
 class Body extends StatelessWidget {
+  const Body({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,16 +20,17 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.03),
-                Text("Complete Profile", style: headingStyle(context)),
-                Text(
-                  "Complete your details or continue  \nwith social media",
+                Text(AppTranslations.completeProfileTitle,
+                    style: headingStyle(context)),
+                const Text(
+                  AppTranslations.completeYourDetails,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.06),
-                CompleteProfileForm(),
+                const CompleteProfileForm(),
                 SizedBox(height: SizeConfig.getProportionateScreenHeight(30)),
                 Text(
-                  "By continuing your confirm that you agree \nwith our Term and Condition",
+                  AppTranslations.termsAndConditions,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),

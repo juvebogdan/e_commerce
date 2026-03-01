@@ -91,7 +91,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                     text: "${AppTranslations.total}:\n",
                     children: [
                       TextSpan(
-                        text: "\$${_total.toStringAsFixed(2)}",
+                        text: "€${_total.toStringAsFixed(2)}",
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],

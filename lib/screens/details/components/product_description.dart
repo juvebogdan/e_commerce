@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/translations.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -71,7 +72,7 @@ class ProductDescription extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  "See More Detail",
+                  AppTranslations.seeMoreDetail,
                   style: TextStyle(
                       fontWeight: FontWeight.w600, color: kPrimaryColor),
                 ),

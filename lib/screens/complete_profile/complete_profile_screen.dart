@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/translations.dart';
 
 import 'components/body.dart';
 
@@ -11,9 +12,9 @@ class CompleteProfileScreen extends StatelessWidget {
       canPop: false,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Complete your profile'),
+          title: const Text(AppTranslations.completeProfileTitle),
         ),
-        body: Body(),
+        body: const Body(),
       ),
     );
   }

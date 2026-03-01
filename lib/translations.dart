@@ -49,12 +49,13 @@ class AppTranslations {
   // Section Title
   static const String seeMore = "Vidi više";
 
+  static const String seeMoreDetail = "Vidi vi\u0161e detalja";
   // Splash Screen
   static const String splashText1 = "Dobrodošli u E-Shop, kupujmo!";
   static const String splashText2 =
       "Pomažemo ljudima da se povežu sa prodavnicama \nširom Crne Gore";
   static const String splashText3 =
-      "Prikazujemo lak način za kupovinu. \nSamo ostanite kod kuće sa nama";
+      "Predstavljamo lak način za kupovinu. \nSamo ostanite kod kuće sa nama";
   static const String continueText = "Nastavi";
 
   // Forgot Password Screen
@@ -85,6 +86,7 @@ class AppTranslations {
       "Nastavkom potvrđujete da se slažete \nsa našim Uslovima i odredbama";
 
   // Complete Profile Screen
+  static const String completeProfileTitle = "Dovršite profil";
   static const String firstName = "Ime";
   static const String enterFirstName = "Unesite vaše ime";
   static const String lastName = "Prezime";
@@ -92,8 +94,11 @@ class AppTranslations {
   static const String phoneNumber = "Broj telefona";
   static const String enterPhoneNumber = "Unesite vaš broj telefona";
   static const String address = "Adresa";
-  static const String enterAddress = "Unesite vašu adresu";
-
+  static const String enterAddress = "Unesite vašu adresu"; // OTP Screen
+  static const String otpVerification = "OTP verifikacija";
+  static const String otpSentCodeTo = "Poslali smo kod na +382 67 321 451 ***";
+  static const String otpCodeExpiresIn = "Kod ističe za ";
+  static const String resendOtpCode = "Ponovo pošalji OTP kod";
   // Login Success Screen
   static const String loginSuccess = "Prijava uspješna";
   static const String backToHome = "Idi na početnu";
