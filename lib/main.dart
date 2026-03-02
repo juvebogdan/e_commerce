@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      initialRoute: !kDebugMode ? HomeScreen.routeName : SplashScreen.routeName,
+      initialRoute: kDebugMode ? HomeScreen.routeName : SplashScreen.routeName,
       routes: routes,
       builder: (context, child) {
         SizeConfig.init(context);

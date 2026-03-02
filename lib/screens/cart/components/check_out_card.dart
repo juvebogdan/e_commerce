@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/models/UserService.dart';
@@ -40,7 +40,6 @@ class _CheckoutCardState extends State<CheckoutCard> {
         vertical: SizeConfig.getProportionateScreenWidth(15),
         horizontal: SizeConfig.getProportionateScreenWidth(30),
       ),
-      // height: 174,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -73,7 +72,13 @@ class _CheckoutCardState extends State<CheckoutCard> {
                   child: SvgPicture.asset("assets/icons/receipt.svg"),
                 ),
                 Spacer(),
-                Text(AppTranslations.addVoucherCode),
+                Flexible(
+                  child: Text(
+                    AppTranslations.addVoucherCode,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.right,
+                  ),
+                ),
                 const SizedBox(width: 10),
                 Icon(
                   Icons.arrow_forward_ios,
@@ -84,21 +89,24 @@ class _CheckoutCardState extends State<CheckoutCard> {
             ),
             SizedBox(height: SizeConfig.getProportionateScreenHeight(20)),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text.rich(
-                  TextSpan(
-                    text: "${AppTranslations.total}:\n",
-                    children: [
-                      TextSpan(
-                        text: "€${_total.toStringAsFixed(2)}",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                      ),
-                    ],
+                Flexible(
+                  flex: 3,
+                  child: Text.rich(
+                    TextSpan(
+                      text: "${AppTranslations.total}:\n",
+                      children: [
+                        TextSpan(
+                          text: "\u20AC${_total.toStringAsFixed(2)}",
+                          style: TextStyle(fontSize: 16, color: Colors.black),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                SizedBox(
-                  width: SizeConfig.getProportionateScreenWidth(190),
+                const SizedBox(width: 12),
+                Expanded(
+                  flex: 5,
                   child: DefaultButton(
                     text: AppTranslations.checkOut,
                     press: () {},

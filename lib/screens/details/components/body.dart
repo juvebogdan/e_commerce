@@ -5,6 +5,7 @@ import 'package:shop_app/size_config.dart';
 import 'package:shop_app/translations.dart';
 
 import 'color_dots.dart';
+import '../more_details_screen.dart';
 import 'product_description.dart';
 import 'top_rounded_container.dart';
 import 'product_images.dart';
@@ -38,7 +39,14 @@ class Body extends StatelessWidget {
               children: [
                 ProductDescription(
                   product: product,
-                  pressOnSeeMore: () {},
+                  pressOnSeeMore: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => MoreDetailsScreen(product: product),
+                      ),
+                    );
+                  },
                 ),
                 TopRoundedContainer(
                   color: Color(0xFFF6F7F9),

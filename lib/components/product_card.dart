@@ -113,7 +113,7 @@ class _ProductCardState extends State<ProductCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "€${widget.product.price}",
+                    "\u20AC${widget.product.price}",
                     style: TextStyle(
                       fontSize: SizeConfig.getProportionateScreenWidth(18),
                       fontWeight: FontWeight.w600,
